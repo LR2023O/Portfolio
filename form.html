@@ -24,9 +24,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
-  (function(){
+  document.addEventListener("DOMContentLoaded", function() {
     emailjs.init("QCWdl4PhhZK_FoLTs"); 
-  })();
+// Initialize EmailJS
+  emailjs.init("QCWdl4PhhZK_FoLTs");
 
   const form = document.getElementById('contactForm');
   const statusMessage = document.getElementById('statusMessage');
@@ -39,11 +40,11 @@
 
     emailjs.sendForm('service_lgabajm', 'template_lfz3kw9', this)
       .then(function() {
-        statusMessage.textContent = "✅ Thank you! Your message has been sent successfully. Will get back to you soon.";
+        statusMessage.textContent = "✅ Thank you! Your message has been sent.";
         statusMessage.style.color = "green";
         form.reset();
 
-        // Auto-hide after 5 seconds
+        // Hide message after 5 seconds
         setTimeout(() => {
           statusMessage.textContent = "";
         }, 5000);
@@ -53,12 +54,16 @@
 
       })
       .catch(function(error) {
-        statusMessage.textContent = "❌ Failed to send message. Please try again later.";
+        statusMessage.textContent = "❌ Failed to send message. Please try again.";
         statusMessage.style.color = "red";
         console.error('EmailJS error:', error);
       });
+
   });
+
+});
 </script>
 
 </body>
 </html>
+
