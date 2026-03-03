@@ -17,7 +17,7 @@
    <a href="index.html">
     <button id="backbtn">Back</button>
     </a>
-  <p id="statusMessage"></p>
+  <p id="statusMessage" style="color: rgb(255, 197, 51);></p>
 </section>
 
 <!-- EmailJS SDK -->
@@ -34,7 +34,7 @@
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    emailjs.sendForm('service_6xoc70p', 'template_lfz3kw9', this)
+    emailjs.sendForm('service_lgabajm', 'template_lfz3kw9', this)
       .then(function() {
         statusMessage.textContent = "Message sent successfully!";
         form.reset();
@@ -47,4 +47,5 @@
 </script>
 
 </body>
+
 </html>
