@@ -3,93 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LarryR</title>
+  <title>Larry Rabach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <img src="profile.jpeg" alt="Profile Photo" class="profile-photo">
-    <h1 style="color: #004ba0;">Larry Rabach</h1>
-    <p id="headerTyping"></p>
-     <div class="contact">
-      <a href="form.html">Contact Me</a>
-  <a href="https://github.com/LR2023O" target="_blank" rel="noopener noreferrer" class="glow-button">
-    View My GitHub
-  </a>
-</div>
 
+  <div class="aurora aurora-a"></div>
+  <div class="aurora aurora-b"></div>
+  <div class="aurora aurora-c"></div>
+
+  <nav class="navbar">
+    <a href="#top" class="brand">LR</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+    </div>
+    <div class="nav-actions">
+      <a href="form.html" class="btn btn-primary">Contact</a>
+      <a href="https://github.com/LR2023O" target="_blank" rel="noopener noreferrer" class="btn btn-ghost glow-button">GitHub</a>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Portfolio &mdash; 2025</p>
+      <h1>Larry<br>Rabach</h1>
+      <p id="headerTyping" class="tagline"></p>
+      <div class="hero-actions">
+        <a href="form.html" class="btn btn-primary btn-lg">Contact me</a>
+        <a href="https://github.com/LR2023O" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg glow-button">View my GitHub</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <img src="profile.jpeg" alt="Portrait of Larry Rabach" class="profile-photo">
+      </div>
+    </div>
   </header>
 
   <main>
-     <section class="about">
-    <h2>About Me</h2>
-    <p id="aboutTyping">Hello! I'm Larry, a creative front-end developer with a passion for crafting visually appealing and user-friendly websites.
-       I focus on clean code, responsive design, and smooth user experience. 
-       Outside of coding, I enjoy learning about new technologies, cyber-security and improving my design workflow.</p>
-  </section>
 
+    <section id="about" class="panel about-panel">
+      <p class="kicker">01 &mdash; About</p>
+      <p id="aboutTyping" class="lede">Hello! I'm Larry, a creative front-end developer with a passion for crafting visually appealing and user-friendly websites.
+        I focus on clean code, responsive design, and smooth user experience.
+        Outside of coding, I enjoy learning about new technologies, cyber-security and improving my design workflow.</p>
+    </section>
 
-    <section>
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="project">
-          <h3>Portfolio Website</h3>
-          <p>Built modern and fully responsive personal portfolio website using HTML, CSS, and JavaScript.</p>
+    <section id="projects" class="projects-section">
+      <p class="kicker">02 &mdash; Projects</p>
+
+      <div class="bento">
+        <div class="card card-wide">
+          <h3>Portfolio website</h3>
+          <p>Built a modern and fully responsive personal portfolio website using HTML, CSS, and JavaScript.</p>
         </div>
-        <div class="project">
+
+        <div class="card">
           <h3>Organization websites</h3>
-          <p>Designed and developed a informative websites for Non-Governmental Organizations : 
-            <ol>
-    <li>Christian Action for Rural Transformation.</li>
-        <a href="https://christian-action-for-rural-transformation.org/"
-          target="_blank" rel="noopener noreferrer">christian-action-for-rural-transformation.org</a>
-    <li>PRO BONO INITIATIVE</li>
-           <a href="https://probonoinitiative.org/"
-             target="_blank" rel="noopener noreferrer">probonoinitiative.org/</a>
-</ol>
-              
-          </p>
+          <p>Informative websites designed and developed for non-governmental organizations.</p>
+          <ol class="card-links">
+            <li><a href="https://christian-action-for-rural-transformation.org/" target="_blank" rel="noopener noreferrer">Christian Action for Rural Transformation</a></li>
+            <li><a href="https://probonoinitiative.org/" target="_blank" rel="noopener noreferrer">Pro Bono Initiative</a></li>
+          </ol>
         </div>
-        <div class="project">
+
+        <div class="card">
           <h3>Data science</h3>
-          <p>Worked on data science projects involving data cleaning, exploratory data analysis, and the creation of machine learning models to assist with automated data insights.</p>
+          <p>Data cleaning, exploratory analysis, and ML models built to support automated data insights.</p>
         </div>
-        <span id="dots">...</span>
 
-    <span id="more">
-        <div class="project">
-          <h3>Python Programming</h3>
-          <p>Worked on python related projects involving data processing scripts, simple applications, and automation tools.</p>
-        </div>
-    </span> </div>
-    <span onclick="readMore()" id="readMoreBtn">Discover more</span>
-     
-    </section>
-    <section>
-      <h2>Technical Skills</h2>
-      <p>
-        <ol>
-          <li><b>Programming: </b><br>
-          Python, C#</li>
-          <li><b>Web Developent: </b><br>
-            HTML, CSS, PHP, Java script
-          Python, C#</li>
-          <li><b>Networking: </b><br>
-          Huawei CLI, LAN, WLAN, IP addressing</li>
-          <li><b>Tools experienced in: </b>
-          Microsoft Visual Studio, VS code, Git, XAMPP, Microsoft 365</li>
-        </ol>
-      </p>
+        <span id="dots">&hellip;</span>
+        <span id="more">
+          <div class="card">
+            <h3>Python programming</h3>
+            <p>Data processing scripts, small applications, and automation tooling.</p>
+          </div>
+        </span>
+      </div>
+
+      <button type="button" onclick="readMore()" id="readMoreBtn">Discover more</button>
     </section>
 
-   
-    <footer>
-      <p>&copy; 2025 Larry Rabach. All rights reserved.</p>
-    </footer>
+    <section id="skills" class="panel skills-panel">
+      <p class="kicker">03 &mdash; Technical skills</p>
+
+      <div class="skill-clusters">
+        <div class="cluster">
+          <h3>Programming</h3>
+          <div class="chips">
+            <span>Python</span><span>C#</span>
+          </div>
+        </div>
+        <div class="cluster">
+          <h3>Web development</h3>
+          <div class="chips">
+            <span>HTML</span><span>CSS</span><span>PHP</span><span>JavaScript</span>
+          </div>
+        </div>
+        <div class="cluster">
+          <h3>Networking</h3>
+          <div class="chips">
+            <span>Huawei CLI</span><span>LAN</span><span>WLAN</span><span>IP addressing</span>
+          </div>
+        </div>
+        <div class="cluster">
+          <h3>Tools</h3>
+          <div class="chips">
+            <span>Visual Studio</span><span>VS Code</span><span>Git</span><span>XAMPP</span><span>Microsoft 365</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <footer>
+    <p>&copy; 2025 Larry Rabach. All rights reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
-
