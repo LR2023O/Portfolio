@@ -1,69 +1,94 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Contact &mdash; Larry Rabach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-<section class="contact-section">
-  <h2>Contact Me</h2>
-  <form id="contactForm">
-    <input type="text" name="user_name" placeholder="Your Name" required>
-    <input type="email" name="user_email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-   <a href="index.html">
-    <button id="backbtn">Back</button>
-    </a>
-  <p id="statusMessage"></p>
-</section>
+  <header class="contact-header">
+    <div class="header-inner">
+      <p class="eyebrow">Get in touch</p>
+      <h1>Contact me</h1>
+      <p class="header-typing">Questions, project ideas, or just want to say hi &mdash; drop a message below.</p>
+    </div>
+  </header>
 
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <main>
+    <section class="contact-section">
+      <h2>Send a message</h2>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    emailjs.init("QCWdl4PhhZK_FoLTs"); 
-// Initialize EmailJS
-  emailjs.init("QCWdl4PhhZK_FoLTs");
+      <form id="contactForm" class="contact-form">
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="user_name" placeholder="Larry Rabach" required>
+        </label>
 
-  const form = document.getElementById('contactForm');
-  const statusMessage = document.getElementById('statusMessage');
+        <label class="field">
+          <span>Your email</span>
+          <input type="email" name="user_email" placeholder="you@example.com" required>
+        </label>
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+        <label class="field">
+          <span>Message</span>
+          <textarea name="message" placeholder="What's on your mind?" rows="5" required></textarea>
+        </label>
 
-    statusMessage.textContent = "Sending message...";
-    statusMessage.style.color = "#333";
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <a href="index.html" class="btn btn-ghost" id="backbtn">Back</a>
+        </div>
 
-    emailjs.sendForm('service_lgabajm', 'template_lfz3kw9', this)
-      .then(function() {
-        statusMessage.textContent = "✅ Thank you! Your message has been sent.";
-        statusMessage.style.color = "green";
-        form.reset();
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
 
-        // Hide message after 5 seconds
-        setTimeout(() => {
-          statusMessage.textContent = "";
-        }, 5000);
+    <footer>
+      <p>&copy; 2025 Larry Rabach. All rights reserved.</p>
+    </footer>
+  </main>
 
-        // Scroll to message
-        statusMessage.scrollIntoView({ behavior: "smooth" });
+  <script src="script.js"></script>
 
-      })
-      .catch(function(error) {
-        statusMessage.textContent = "❌ Failed to send message. Please try again.";
-        statusMessage.style.color = "red";
-        console.error('EmailJS error:', error);
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("QCWdl4PhhZK_FoLTs");
+
+      const form = document.getElementById('contactForm');
+      const statusMessage = document.getElementById('statusMessage');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        statusMessage.textContent = "Sending message...";
+        statusMessage.className = "status-message is-pending";
+
+        emailjs.sendForm('service_lgabajm', 'template_lfz3kw9', this)
+          .then(function () {
+            statusMessage.textContent = "Thank you! Your message has been sent.";
+            statusMessage.className = "status-message is-success";
+            form.reset();
+
+            setTimeout(() => {
+              statusMessage.textContent = "";
+              statusMessage.className = "status-message";
+            }, 5000);
+
+            statusMessage.scrollIntoView({ behavior: "smooth" });
+          })
+          .catch(function (error) {
+            statusMessage.textContent = "Failed to send message. Please try again.";
+            statusMessage.className = "status-message is-error";
+            console.error('EmailJS error:', error);
+          });
       });
-
-  });
-
-});
-</script>
-
+    });
+  </script>
 </body>
 </html>
-
