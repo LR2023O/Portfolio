@@ -1,61 +1,34 @@
-// Typing text for the header
-const headerText = "Web Developer | UI Designer | Tech Enthusiast";
-
-// Typing text for the About section const aboutText = ``;
-
-// Get the elements
-const headerTyping = document.getElementById("headerTyping");
-const aboutTyping = document.getElementById("aboutTyping");
-
-let i = 0;
-let j = 0;
-
-// Function to type the header text
-function typeHeader() {
-  if (i < headerText.length) {
-    headerTyping.textContent += headerText.charAt(i);
-    i++;
-    setTimeout(typeHeader, 50); // typing speed
-  } else {
-    headerTyping.style.borderRight = "none"; // remove cursor after done
-    setTimeout(typeAbout, 4); // pause before About section starts
-  }
+// Typing effect for the hero tagline
+function typeText(el, text, speed = 28) {
+  if (!el) return;
+  let i = 0;
+  el.textContent = '';
+  (function tick() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(tick, speed);
+    }
+  })();
 }
 
-// Function to type the About paragraph
-function typeAbout() {
-  if (j < aboutText.length) {
-    aboutTyping.textContent += aboutText.charAt(j);
-    j++;
-    setTimeout(typeAbout, 25); // typing speed
-  } else {
-    aboutTyping.style.borderRight = "none";
-  }
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const headerTyping = document.getElementById('headerTyping');
+  typeText(headerTyping, "Building clean, responsive, and thoughtful web experiences.");
 
-// Start typing when page loads
-window.addEventListener("DOMContentLoaded", typeHeader);
-
+  const more = document.getElementById('more');
+  const dots = document.getElementById('dots');
+  if (more) more.classList.remove('expanded');
+  if (dots) dots.style.display = 'block';
+});
 
 function readMore() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btn = document.getElementById("readMoreBtn");
+  const more = document.getElementById('more');
+  const dots = document.getElementById('dots');
+  const btn = document.getElementById('readMoreBtn');
+  if (!more) return;
 
-    if (dots.style.display === "none") {
-        dots.style.display = "inline";
-        moreText.style.display = "none";
-        btn.innerHTML = " Read more";
-    } else {
-        dots.style.display = "none";
-        moreText.style.display = "inline";
-        btn.innerHTML = " Discover less";
-    }
+  const isExpanded = more.classList.toggle('expanded');
+  if (dots) dots.style.display = isExpanded ? 'none' : 'block';
+  if (btn) btn.textContent = isExpanded ? 'Show less' : 'Discover more';
 }
-
-const sidebar = document.querySelector('header');
-const toggleBtn = document.getElementById('sidebarToggle');
-
-toggleBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('active'); // slides header in/out
-});
