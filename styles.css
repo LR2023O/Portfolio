@@ -1,10 +1,3 @@
-/* ===================================================================
-   Larry Rabach — portfolio (glass / aurora layout)
-   Third visual direction on the same blue palette: soft glowing
-   "aurora" blobs behind frosted glass panels, big editorial type
-   for the hero, and a bento-style project grid.
-   =================================================================== */
-
 :root {
   --blue-deep:   #0a56b0;
   --blue-bright: #4d9fff;
@@ -63,8 +56,6 @@ button:focus-visible {
   color: var(--bg);
 }
 
-/* ---------- aurora background ---------- */
-
 .aurora {
   position: fixed;
   border-radius: 50%;
@@ -99,10 +90,6 @@ button:focus-visible {
   background: radial-gradient(circle, var(--blue-glow), transparent 70%);
   opacity: 0.22;
 }
-
-/* ===================================================================
-   Navbar
-   =================================================================== */
 
 .navbar {
   position: sticky;
@@ -149,8 +136,6 @@ button:focus-visible {
   display: flex;
   gap: 0.75rem;
 }
-
-/* buttons */
 
 .btn {
   display: inline-flex;
@@ -200,10 +185,6 @@ button:focus-visible {
 .glow-button:hover {
   box-shadow: 0 0 24px rgba(124, 212, 255, 0.30);
 }
-
-/* ===================================================================
-   Hero
-   =================================================================== */
 
 .hero {
   max-width: var(--content-width);
@@ -275,10 +256,6 @@ button:focus-visible {
   display: block;
   background: var(--bg);
 }
-
-/* ===================================================================
-   Panels / sections
-   =================================================================== */
 
 main {
   max-width: var(--content-width);
@@ -476,10 +453,6 @@ footer {
   font-size: 0.85rem;
 }
 
-/* ===================================================================
-   Responsive
-   =================================================================== */
-
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
@@ -526,10 +499,6 @@ footer {
   }
 }
 
-/* ===================================================================
-   Contact page (form.html) — reuses all tokens above
-   =================================================================== */
- 
 .contact-header {
   padding: 3.75rem 1.5rem 3rem;
   display: flex;
