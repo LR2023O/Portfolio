@@ -1,3 +1,10 @@
+/* ===================================================================
+   Larry Rabach — portfolio (glass / aurora layout)
+   Third visual direction on the same blue palette: soft glowing
+   "aurora" blobs behind frosted glass panels, big editorial type
+   for the hero, and a bento-style project grid.
+   =================================================================== */
+
 :root {
   --blue-deep:   #0a56b0;
   --blue-bright: #4d9fff;
@@ -56,6 +63,8 @@ button:focus-visible {
   color: var(--bg);
 }
 
+/* ---------- aurora background ---------- */
+
 .aurora {
   position: fixed;
   border-radius: 50%;
@@ -90,6 +99,10 @@ button:focus-visible {
   background: radial-gradient(circle, var(--blue-glow), transparent 70%);
   opacity: 0.22;
 }
+
+/* ===================================================================
+   Navbar
+   =================================================================== */
 
 .navbar {
   position: sticky;
@@ -136,6 +149,8 @@ button:focus-visible {
   display: flex;
   gap: 0.75rem;
 }
+
+/* buttons */
 
 .btn {
   display: inline-flex;
@@ -185,6 +200,10 @@ button:focus-visible {
 .glow-button:hover {
   box-shadow: 0 0 24px rgba(124, 212, 255, 0.30);
 }
+
+/* ===================================================================
+   Hero
+   =================================================================== */
 
 .hero {
   max-width: var(--content-width);
@@ -256,6 +275,10 @@ button:focus-visible {
   display: block;
   background: var(--bg);
 }
+
+/* ===================================================================
+   Panels / sections
+   =================================================================== */
 
 main {
   max-width: var(--content-width);
@@ -453,6 +476,10 @@ footer {
   font-size: 0.85rem;
 }
 
+/* ===================================================================
+   Responsive
+   =================================================================== */
+
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
@@ -499,119 +526,348 @@ footer {
   }
 }
 
-.contact-header {
-  padding: 3.75rem 1.5rem 3rem;
-  display: flex;
+/* Popup overlay */
+.contact-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: none;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
-  background: rgba(5, 7, 13, 0.6);
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  background: rgba(5, 7, 13, 0.75);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* Show popup */
+.contact-popup.active {
+  display: flex;
+}
+
+
+/* Popup container */
+.contact-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+
+  padding: 1.75rem;
+
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+  animation: contactPopupIn 0.2s ease;
 }
- 
-.contact-header .header-typing {
+
+
+/* Popup animation */
+@keyframes contactPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
   color: var(--ink-soft);
+
+  font-size: 1.3rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
- 
+
+.close-btn:hover {
+  color: var(--ink);
+  border-color: var(--blue-bright);
+  background: rgba(77, 159, 255, 0.08);
+}
+
+
+/* Popup heading */
+.contact-modal .eyebrow {
+  margin-bottom: 0.35rem;
+
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+
+  color: var(--blue-bright);
+}
+
+.contact-modal h2 {
+  margin: 0 0 0.5rem;
+
+  color: var(--ink);
+
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.contact-description {
+  margin: 0 0 1.5rem;
+
+  color: var(--ink-soft);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+/* ===================================================================
+   Contact Form
+   =================================================================== */
+
 .contact-form {
   display: flex;
   flex-direction: column;
+
   gap: 1.35rem;
+
+  width: 100%;
   max-width: 520px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 0;
+
+  padding: 0;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
- 
+
+
+/* Fields */
 .field {
   display: flex;
   flex-direction: column;
+
   gap: 0.5rem;
 }
- 
+
 .field span {
   font-family: var(--font-mono);
   font-size: 0.78rem;
+
   color: var(--ink-soft);
 }
- 
+
+
+/* Inputs */
 .field input,
 .field textarea {
   width: 100%;
+
   padding: 0.75rem 0.9rem;
+
   background: var(--surface);
-  border: 1px solid var(--line);
+
+  border: 1px solid var(--ink-faint);
   border-radius: 8px;
+
   color: var(--ink);
+
   font-family: var(--font-body);
   font-size: 0.95rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
- 
+
 .field textarea {
   resize: vertical;
   min-height: 120px;
 }
- 
+
 .field input::placeholder,
 .field textarea::placeholder {
   color: var(--ink-soft);
   opacity: 0.75;
 }
- 
+
+
+/* Input focus */
 .field input:focus,
 .field textarea:focus {
   outline: none;
+
   border-color: var(--blue-bright);
-  box-shadow: 0 0 0 3px rgba(77, 159, 255, 0.18);
+
+  box-shadow:
+    0 0 0 3px rgba(77, 159, 255, 0.18);
 }
- 
+
+
+/* ===================================================================
+   Form Buttons
+   =================================================================== */
+
 .form-actions {
   display: flex;
+
   gap: 0.9rem;
   flex-wrap: wrap;
+
   margin-top: 0.25rem;
 }
- 
+
+.form-actions .btn {
+  cursor: pointer;
+}
+
 .form-actions #backbtn {
   cursor: pointer;
 }
- 
+
+
+/* Send button */
+.send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  background: var(--blue-bright);
+  color: #fff;
+
+  border: 1px solid var(--blue-bright);
+  border-radius: 8px;
+
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.send-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 20px rgba(77, 159, 255, 0.25);
+}
+
+.send-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ===================================================================
+   Status Message
+   =================================================================== */
+
 .status-message {
   min-height: 1.4em;
+
   margin: 0.25rem 0 0;
+
   font-size: 0.9rem;
+
   color: var(--ink-soft);
 }
- 
+
 .status-message.is-pending {
   color: var(--ink-soft);
 }
- 
+
 .status-message.is-success {
   color: #6fe3a3;
 }
- 
+
 .status-message.is-error {
   color: #ff8a8a;
 }
- 
+
+
+/* ===================================================================
+   Mobile
+   =================================================================== */
+
 @media (max-width: 600px) {
+
+  .contact-popup {
+    padding: 1rem;
+  }
+
+  .contact-modal {
+    padding: 1.4rem;
+
+    max-height: 92vh;
+  }
+
+  .contact-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-description {
+    font-size: 0.9rem;
+  }
+
   .form-actions {
     flex-direction: column;
     align-items: stretch;
   }
- 
+
   .form-actions .btn {
     width: 100%;
     justify-content: center;
   }
+
+  .send-btn {
+    width: 100%;
+  }
 }
- 
